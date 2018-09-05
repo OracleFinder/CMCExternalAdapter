@@ -1,0 +1,23 @@
+{
+  "name": "cmc-adapter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OracleFinder/CMCExternalAdapter.git"
+  },
+  "author": {
+    "name": "Jonas Hals",
+    "email": "jhals@fiews.io",
+    "url": "https://github.com/boxhock"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OracleFinder/CMCExternalAdapter/issues"
+  },
+  "homepage": "https://github.com/OracleFinder/CMCExternalAdapter#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
