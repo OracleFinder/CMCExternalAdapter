@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/OracleFinder/CMCExternalAdapter#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "request": "^2.88.0"
   }
 }
