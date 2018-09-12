@@ -28,6 +28,7 @@ docker run -d \
     --name cmcadaptor \
     -p 80:80 \
     -e PORT=80 \
+    -e API_KEY=<YOUR CMC API KEY> \
     cmcadaptor
 ```
 
