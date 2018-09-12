@@ -1,6 +1,6 @@
 # Chainlink CoinMarketCap External Adapter
 
-Adapter for use on Google Cloud Platform or AWS Lambda. Upload Zip and use trigger URL as bridge endpoint.
+Adapter for use on Google Cloud Platform, AWS Lambda or Docker. Upload Zip and use trigger URL as bridge endpoint.
 
 ## Install
 
@@ -20,6 +20,16 @@ Create a cloud function in GCP or Lambda, and set the handler function according
 * AWS: `handler`
 
 **REMEMBER TO** set the environment variable `API_KEY` to your [CoinMarketCap API Key](https://pro.coinmarketcap.com/)!
+
+## Docker
+```bash
+docker build . -t cmcadaptor
+docker run -d \
+    --name cmcadaptor \
+    -p 80:80 \
+    -e PORT=80 \
+    cmcadaptor
+```
 
 ## Test Cases (GCP/AWS test events)
 
