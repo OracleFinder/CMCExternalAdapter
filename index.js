@@ -213,7 +213,8 @@ let handle = (data, callback) => {
     });
 };
 
-exports.handler = (event, context, callback) => {
+exports.handler = (eventRaw, context, callback) => {
+    let event = JSON.parse(eventRaw.body);
     let data = {
         jobId: event.id,
         apiKey: process.env.API_KEY || "",
@@ -240,7 +241,13 @@ exports.handler = (event, context, callback) => {
     };
 
     handle(data, (statusCode, responseData) => {
-        callback(null, responseData);
+        let response = {
+            "statusCode": statusCode,
+            "headers": {},
+            "body": JSON.stringify(responseData),
+            "isBase64Encoded": false
+        };
+        callback(null, response);
     });
 };
 
