@@ -3,8 +3,8 @@ description: Adapter to connect the CoinMarketCap API to Chainlink nodes
 node_identifier: cmc-ea
 platforms:
   - Docker
-  - Lambda
-  - Google Cloud Platform
+  - AWS Lambda
+  - GCP Functions
 data_sources:
   - name: CoinMarketCap
     url: https://coinmarketcap.com/
