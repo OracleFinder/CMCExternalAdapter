@@ -205,6 +205,10 @@ let handle = (data, callback) => {
                 error: error
             });
         } else {
+            let resp = body;
+            if (data.endpoint === "cryptocurrency" && data.resource === "quotes" && data.path === "latest")
+                resp.result = body.data[data.symbol].quote[data.convert].price;
+
             callback(response.statusCode, {
                 jobRunID: data.jobId,
                 data: body
@@ -217,15 +221,15 @@ exports.handler = (event, context, callback) => {
     let data = {
         jobId: event.id,
         apiKey: process.env.API_KEY || "",
-        endpoint: event.data.endpoint || "",
-        resource: event.data.resource || "",
-        path: event.data.path || "",
+        endpoint: event.data.endpoint || "cryptocurrency",
+        resource: event.data.resource || "quotes",
+        path: event.data.path || "latest",
         id: event.data.id || "",
-        symbol: event.data.symbol || "",
+        symbol: event.data.coin || event.data.symbol || "",
         listing_status: event.data.listing_status || "",
         start: event.data.start || "",
         limit: event.data.limit || "",
-        convert: event.data.convert || "",
+        convert: event.data.market || event.data.convert || "",
         sort: event.data.sort || "",
         sort_dir: event.data.sort_dir || "",
         cryptocurrency_type: event.data.cryptocurrency_type || "",
@@ -248,15 +252,15 @@ exports.gcpservice = (req, res) => {
     let data = {
         jobId: req.body.id,
         apiKey: process.env.API_KEY || "",
-        endpoint: req.body.data.endpoint || "",
-        resource: req.body.data.resource || "",
-        path: req.body.data.path || "",
+        endpoint: req.body.data.endpoint || "cryptocurrency",
+        resource: req.body.data.resource || "quotes",
+        path: req.body.data.path || "latest",
         id: req.body.data.id || "",
-        symbol: req.body.data.symbol || "",
+        symbol: req.body.data.coin || req.body.data.symbol || "",
         listing_status: req.body.data.listing_status || "",
         start: req.body.data.start || "",
         limit: req.body.data.limit || "",
-        convert: req.body.data.convert || "",
+        convert: req.body.data.market || req.body.data.convert || "",
         sort: req.body.data.sort || "",
         sort_dir: req.body.data.sort_dir || "",
         cryptocurrency_type: req.body.data.cryptocurrency_type || "",
